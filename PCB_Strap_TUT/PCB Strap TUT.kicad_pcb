@@ -1215,7 +1215,7 @@
       (net 2 "GND") (pinfunction "-") (pintype "passive") (tstamp 09ecd05b-ac4b-4f52-a595-52403a14b97e))
     (pad "2" thru_hole circle (at 1.9 0) (size 1 1) (drill 0.65) (layers "*.Cu" "*.Mask")
       (net 3 "Net-(MK1-+)") (pinfunction "+") (pintype "passive") (tstamp 62f2d7e4-9101-487e-8520-e9ae814a1125))
-    (model "${KIPRJMOD}/pom-5042p-c3310-r.stp"
+    (model "${KIPRJMOD}/3D_Data/pom-5042p-c3310-r.stp"
       (offset (xyz 1 -1 5.1))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 -90))
@@ -1314,7 +1314,7 @@
     (pad "2" thru_hole circle (at -2.54 0 180) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask")
       (net 35 "+3V0") (pinfunction "B") (pintype "passive") (tstamp 6c0d87f8-f7f9-4df3-8dcc-f9edc2230687))
     (pad "3" thru_hole circle (at 2.54 0 180) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (tstamp 780fb10b-993e-4d25-a5eb-7cf4bb6334b8))
-    (model "${KIPRJMOD}/Vertical slide switch SS-12D00G3 High Knob 3mm SPDT v2.step"
+    (model "${KIPRJMOD}/3D_Data/Vertical slide switch SS-12D00G3 High Knob 3mm SPDT v2.step"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 90))
@@ -2891,7 +2891,7 @@
         )
       )
     )
-    (model "${KIPRJMOD}/User Library-BC-2001.STEP"
+    (model "${KIPRJMOD}/3D_Data/User Library-BC-2001.STEP"
       (offset (xyz -10.5 -11 3.8))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
