@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=AudioLevelMeter.X
+PROJECTNAME=SoundLevelMeter.X
 
 # Active Configuration
 DEFAULTCONF=default
