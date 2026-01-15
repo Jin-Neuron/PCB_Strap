@@ -1,0 +1,15 @@
+# --- MPLAB X Project files ---
+# 1. 成果物とビルド中間ファイルを無視
+build/
+dist/
+
+# 2. nbproject内の個人設定（絶対パスなど）を無視
+nbproject/private/
+nbproject/Makefile-genesis.properties
+
+# 3. nbproject内の重要な設定ファイルは追跡対象にする
+# (もし以前に nbproject/ を丸ごと無視していた場合は以下を追加)
+!nbproject/configurations.xml
+!nbproject/project.xml
+!nbproject/project.properties
+!nbproject/Makefile
