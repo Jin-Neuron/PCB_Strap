@@ -6,7 +6,7 @@ Linker command line:
   --edf=C:\Program Files\Microchip\xc8\v3.10\pic\dat\20250813170317_en.msgs \
   -cs -h+dist/default/debug\SoundLevelMeter.X.debug.sym \
   --cmf=dist/default/debug\SoundLevelMeter.X.debug.cmf -z -Q16F1503 \
-  -oC:\Users\MONOZU~1\AppData\Local\Temp\xcAsfrk.0\driver_tmp_3.o \
+  -oC:\Users\yuuji\AppData\Local\Temp\xcAsdew.0\driver_tmp_3.o \
   --fixupoverflow=error -ver=XC8 PIC(R) Assembler --fixupoverflow=lstwarn \
   -Mdist/default/debug/SoundLevelMeter.X.debug.map -E1 -ACODE=00h-07FFh \
   -ASTRCODE=00h-07FFh -ASTRING=00h-0FFhx8 -ACONST=00h-0FFhx8 \
@@ -36,11 +36,11 @@ Machine type is 16F1503
                 Name                               Link     Load   Length Selector   Space Scale
 build/default/debug/newAsmTemplate.o
                 config                             8007     8007        2        0       4
-                Por_Vec                             78C      78C       74      F18       0
+                Por_Vec                             774      774       8C      EE8       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
-                Por_Vec                             78C      78C       74         0
+                Por_Vec                             774      774       8C         0
 
         CLASS   STRCODE        
 
@@ -135,7 +135,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
-                Por_Vec                        00078C  000074  000800       F18       0  CODE        2
+                Por_Vec                        000774  00008C  000800       EE8       0  CODE        2
 
 
 UNUSED ADDRESS RANGES
@@ -144,10 +144,10 @@ UNUSED ADDRESS RANGES
         BANK0            00020-0006F              50           1
         BANK1            000A0-000BF              20           1
         BIGRAM           02000-0206F              70           1
-        CODE             00000-0078B             78C           2
+        CODE             00000-00773             774           2
         COMMON           00070-0007F              10           1
-        CONST            00000-0078B             100           2
-        ENTRY            00000-0078B             100           2
+        CONST            00000-00773             100           2
+        ENTRY            00000-00773             100           2
         IDLOC            08000-08003               4           2
         RAM              00020-0006F              50           1
                          000A0-000BF              20
@@ -173,17 +173,16 @@ UNUSED ADDRESS RANGES
         SFR26            00D00-00D6F              70           1
         SFR27            00D80-00DEF              70           1
         SFR28            00E00-00E6F              70           1
-        SFR29            00E80-00EEF              70           1
+        SFR29            00E80-00EE7              68           1
         SFR3             00180-001EF              70           1
-        SFR30            00F00-00F17              18           1
         SFR4             00200-0026F              70           1
         SFR5             00280-002EF              70           1
         SFR6             00300-0036F              70           1
         SFR7             00380-003EF              70           1
         SFR8             00400-0046F              70           1
         SFR9             00480-004EF              70           1
-        STRCODE          00000-0078B             78C           2
-        STRING           00000-0078B             100           2
+        STRCODE          00000-00773             774           2
+        STRING           00000-00773             100           2
 
                                   Symbol Table
 

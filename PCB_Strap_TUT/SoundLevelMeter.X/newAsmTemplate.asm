@@ -23,9 +23,7 @@
     Flags	equ  0x73
     count_1	equ  0x74
     count_2	equ  0x75
-    MicLevel1	equ  0x76
-    MicLevel0	equ  0x77
-    MicLevelMix	equ  0x78
+    MicLevelMix	equ  0x76
 	
     PSECT Por_Vec,class=CODE,delta=2
 
@@ -51,11 +49,8 @@ START:
 	CLRF	ANSELC	    ; All digital I/O
 	
 	BANKSEL ADCON1
-	MOVLW	11000011B
+	MOVLW	11000000B
 	MOVWF	ADCON1
-	BANKSEL	FVRCON
-	MOVLW	10000010B
-	MOVWF	FVRCON
 	
 	BANKSEL	TRISA
 	MOVLW	11001011B ; RA5,4 : Digital I/O / RA2 : Analog Input
@@ -81,28 +76,18 @@ STEP1:
 	BTFSC	ADCON0,1
 	GOTO	$-1	    ; Wait ADC Completing
 	
-	BANKSEL	ADRESH
-	MOVF	ADRESH,W
-	MOVWF	MicLevel1
 	BANKSEL	ADRESL
 	MOVF	ADRESL,W
-	MOVWF	MicLevel0
-	
-	BANKSEL	MicLevel0
-	CLRF	Pins_A
-	CLRF	Pins_C
-	
-	MOVF	MicLevel0,W ; Level Mix
 	ANDLW	0xF0
 	MOVWF	MicLevelMix
-	
-	MOVF	MicLevel1,W
+	BANKSEL	ADRESH
+	MOVF	ADRESH,W
 	ANDLW	0x03
 	IORWF	MicLevelMix,F
 	SWAPF	MicLevelMix,F
 	
 	BANKSEL	MicLevelMix
-	MOVLW   0x06
+	MOVLW   0x03
 	SUBWF   MicLevelMix,W
 	BANKSEL	LATA
 	BTFSC   STATUS,0
@@ -116,7 +101,7 @@ STEP1:
     CheckA5:
 	
 	BANKSEL	MicLevelMix
-	MOVLW   0x08
+	MOVLW   0x05
 	SUBWF   MicLevelMix,W
 	BANKSEL	LATA
 	BTFSC   STATUS,0
@@ -130,7 +115,7 @@ STEP1:
     CheckC0:
     
 	BANKSEL	MicLevelMix
-    	MOVLW   0x0A
+    	MOVLW   0x07
 	SUBWF   MicLevelMix,W
 	BANKSEL	LATC
 	BTFSC   STATUS,0
@@ -144,7 +129,7 @@ STEP1:
     CheckC1:
 	
 	BANKSEL	MicLevelMix
-	MOVLW   0x0C
+	MOVLW   0x09
 	SUBWF   MicLevelMix,W
 	BANKSEL	LATC
 	BTFSC   STATUS,0
@@ -158,7 +143,7 @@ STEP1:
     CheckC2:
 	
 	BANKSEL	MicLevelMix
-	MOVLW   0x0E
+	MOVLW   0x0B
 	SUBWF   MicLevelMix,W
 	BANKSEL	LATC
 	BTFSC   STATUS,0
@@ -172,7 +157,7 @@ STEP1:
     CheckC3:
 	
 	BANKSEL	MicLevelMix
-	MOVLW   0x10
+	MOVLW   0x0D
 	SUBWF   MicLevelMix,W
 	BANKSEL	LATC
 	BTFSC   STATUS,0
@@ -186,7 +171,7 @@ STEP1:
     CheckC4:
 	
 	BANKSEL	MicLevelMix
-	MOVLW   0x12
+	MOVLW   0x0F
 	SUBWF   MicLevelMix,W
 	BANKSEL	LATC
 	BTFSC   STATUS,0
@@ -200,7 +185,7 @@ STEP1:
     CheckC5:
 	
 	BANKSEL	MicLevelMix
-	MOVLW   0x14
+	MOVLW   0x11
 	SUBWF   MicLevelMix,W
 	BANKSEL	LATC
 	BTFSC   STATUS,0
@@ -220,9 +205,9 @@ STEP1:
 ; ???? 256 x 256 (789 ms)
 Count64k:
 	BANKSEL	count_1
-	MOVLW	0x0F
+	MOVLW	0xFF
 	MOVWF	count_1
-	MOVLW	0x0F
+	MOVLW	0xFF
 	MOVWF   count_2
 Count64kLoop:
 	decfsz  count_1,F

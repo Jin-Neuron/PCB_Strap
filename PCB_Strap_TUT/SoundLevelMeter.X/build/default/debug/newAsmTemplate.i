@@ -4482,69 +4482,117 @@ STEP1:
  IORWF MicLevelMix,F
  SWAPF MicLevelMix,F
 
- BANKSEL Pins_A
- BSF Pins_A,4
- MOVF Pins_A,W
+ BANKSEL MicLevelMix
+ MOVLW 0x06
+ SUBWF MicLevelMix,W
  BANKSEL LATA
- MOVWF LATA
+ BTFSC STATUS,0
+ goto SetA4
+ bcf LATA, 4
+ goto CheckA5
 
- CALL Count64k
+    SetA4:
+ bsf LATA, 4
 
- BANKSEL Pins_A
- BSF Pins_A,5
- MOVF Pins_A,W
+    CheckA5:
+
+ BANKSEL MicLevelMix
+ MOVLW 0x08
+ SUBWF MicLevelMix,W
  BANKSEL LATA
- MOVWF LATA
+ BTFSC STATUS,0
+ goto SetA5
+ bcf LATA, 5
+ goto CheckC0
 
- CALL Count64k
+    SetA5:
+ bsf LATA, 5
 
- BANKSEL Pins_C
- BSF Pins_C,0
- MOVF Pins_C,W
+    CheckC0:
+
+ BANKSEL MicLevelMix
+     MOVLW 0x0A
+ SUBWF MicLevelMix,W
  BANKSEL LATC
- MOVWF LATC
+ BTFSC STATUS,0
+ goto SetC0
+ bcf LATC, 0
+ goto CheckC1
 
- CALL Count64k
+    SetC0:
+ bsf LATC, 0
 
- BANKSEL Pins_C
- BSF Pins_C,1
- MOVF Pins_C,W
+    CheckC1:
+
+ BANKSEL MicLevelMix
+ MOVLW 0x0C
+ SUBWF MicLevelMix,W
  BANKSEL LATC
- MOVWF LATC
+ BTFSC STATUS,0
+ goto SetC1
+ bcf LATC, 1
+ goto CheckC2
 
- CALL Count64k
+    SetC1:
+ bsf LATC, 1
 
- BANKSEL Pins_C
- BSF Pins_C,2
- MOVF Pins_C,W
+    CheckC2:
+
+ BANKSEL MicLevelMix
+ MOVLW 0x0E
+ SUBWF MicLevelMix,W
  BANKSEL LATC
- MOVWF LATC
+ BTFSC STATUS,0
+ goto SetC2
+ bcf LATC, 2
+ goto CheckC3
 
- CALL Count64k
+    SetC2:
+ bsf LATC, 2
 
- BANKSEL Pins_C
- BSF Pins_C,3
- MOVF Pins_C,W
+    CheckC3:
+
+ BANKSEL MicLevelMix
+ MOVLW 0x10
+ SUBWF MicLevelMix,W
  BANKSEL LATC
- MOVWF LATC
+ BTFSC STATUS,0
+ goto SetC3
+ bcf LATC, 3
+ goto CheckC4
 
- CALL Count64k
+    SetC3:
+ bsf LATC, 3
 
- BANKSEL Pins_C
- BSF Pins_C,4
- MOVF Pins_C,W
+    CheckC4:
+
+ BANKSEL MicLevelMix
+ MOVLW 0x12
+ SUBWF MicLevelMix,W
  BANKSEL LATC
- MOVWF LATC
+ BTFSC STATUS,0
+ goto SetC4
+ bcf LATC, 4
+ goto CheckC5
 
- CALL Count64k
+    SetC4:
+ bsf LATC, 4
 
- BANKSEL Pins_C
- BSF Pins_C,5
- MOVF Pins_C,W
+    CheckC5:
+
+ BANKSEL MicLevelMix
+ MOVLW 0x14
+ SUBWF MicLevelMix,W
  BANKSEL LATC
- MOVWF LATC
+ BTFSC STATUS,0
+ goto SetC5
+ bcf LATC, 5
+ goto endLoop
 
- CALL Count64k
+    SetC5:
+ bsf LATC, 5
+
+    endLoop:
 
  CALL Count64k
 
@@ -4553,9 +4601,9 @@ STEP1:
 ; ???? 256 x 256 (789 ms)
 Count64k:
  BANKSEL count_1
- MOVLW 0xFF
+ MOVLW 0x0F
  MOVWF count_1
- MOVLW 0xFF
+ MOVLW 0x0F
  MOVWF count_2
 Count64kLoop:
  decfsz count_1,F
